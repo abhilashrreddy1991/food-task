@@ -1,0 +1,25 @@
+<div *ngIf="food" class="food-container">
+  <img [src]="food.imageUrl" [alt]="food.name" />
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{ food.name }}
+      </span>
+    </div>
+    <div class="origins">
+      <span *ngFor="let origin of food.origins">
+        {{ origin }}
+      </span>
+    </div>
+    <div class="tag"></div>
+    <div class="cook-time">
+      <span>
+        Time to cook is about : <strong>{{ food.cookTime }}</strong> Minutes
+      </span>
+    </div>
+    <div class="price">
+      <span> {{ food.price | currency : "₹" }} </span>
+    </div>
+    <button (click)="addToCart()">Add to Cart</button>
+  </div>
+</div>

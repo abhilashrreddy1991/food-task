@@ -1,0 +1,49 @@
+header {
+  background-color: var(--orange-light-2);
+  padding: 0;
+  border-bottom: 1px solid var(--orange);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 4rem;
+}
+
+.logo {
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
+  color: var(--orange-dark);
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list-item > a {
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+}
+
+.nav-list-item > a:hover {
+  font-weight: bolder;
+}
+
+.cart-count {
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}

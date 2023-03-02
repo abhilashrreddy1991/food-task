@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+:root {
+  --orange: #e67e22;
+  --orange-light-1: #eb984e;
+  --orange-light-2: #fae5d3;
+  --orange-light-3: #fdf2e9;
+  --orange-dark: #cf711f;
+  --white: #ffffff;
+  --gray: #888;
+  --light-gray: #767676;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
+
+a {
+  text-decoration: none;
+}

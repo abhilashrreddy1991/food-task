@@ -1,0 +1,171 @@
+<div *ngIf="cart && !!cart.items.length" class="cart-container">
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+      <ul>
+        <li *ngFor="let cartItem of cart.items">
+          <div>
+            <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name" />
+          </div>
+          <div>
+            <a routerLink="/food/{{ cartItem.food.id }}">
+              {{ cartItem.food.name }}
+            </a>
+          </div>
+          <div>
+            <select
+              #quantitySelect
+              (change)="changeQuantity(cartItem, quantitySelect.value)"
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div>
+            {{ cartItem.price | currency : "₹" }}
+          </div>
+          <div>
+            <button class="remove-button" (click)="removeFromCart(cartItem)">
+              Remove
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="offset-lg-1 offset-md-1 col-md-4 col-lg-4 col-sm-6 col-xs-6">
+      <div class="checkout">
+        <div>
+          <div class="food-count">
+            {{ cart.items.length }}
+          </div>
+          <div class="subtotal">{{ cart.totalPrice | currency : "₹" }}</div>
+          <div class="tax">{{ tax | currency : "₹" }}</div>
+          <div class="total-price">{{ totalAfterTax | currency : "₹" }}</div>
+        </div>
+        <!-- credit card element start-->
+        <form
+          id="checkoutForm"
+          (ngSubmit)="onSubmit(userForm.value)"
+          [formGroup]="userForm"
+        >
+          <div class="credit-card">
+            <div class="form-body">
+              <div class="form-header-1">
+                <h4 class="title">Card details</h4>
+              </div>
+              <hr />
+
+              <!-- Card Number -->
+
+              <input
+                type="text"
+                class="card-name form-control"
+                placeholder="Name as per Card"
+                formControlName="card_user_name"
+              />
+              <input
+                type="text"
+                class="card-number form-control"
+                placeholder="Card Number"
+                formControlName="card_number"
+              />
+
+              <!-- Date Field -->
+              <div class="date-field">
+                <div class="month">
+                  <select
+                    name="Month"
+                    class="form-control"
+                    formControlName="card_expiry_month"
+                  >
+                    <option value="january">January</option>
+                    <option value="february">February</option>
+                    <option value="march">March</option>
+                    <option value="april">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="august">August</option>
+                    <option value="september">September</option>
+                    <option value="october">October</option>
+                    <option value="november">November</option>
+                    <option value="december">December</option>
+                  </select>
+                </div>
+                <div class="year">
+                  <select
+                    name="Year"
+                    class="form-control"
+                    formControlName="card_expiry_year"
+                  >
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Card Verification Field -->
+              <div class="card-verification">
+                <div class="cvv-input">
+                  <input
+                    type="text"
+                    placeholder="CVV"
+                    class="form-control"
+                    formControlName="card_cvv"
+                  />
+                </div>
+                <div class="cvv-details">
+                  <p>
+                    3 or 4 digits usually found <br />
+                    on the signature strip
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- </form> -->
+
+            <div class="credit-card">
+              <div class="form-body">
+                <!-- Delivery Address -->
+                <div class="form-header-1">
+                  <h4 class="title">Name & Delivery Address</h4>
+                </div>
+                <hr />
+
+                <label for="name" class="form-label">Name:</label>
+                <input
+                  type="text"
+                  class="card-number form-control"
+                  placeholder="Name"
+                  id="name"
+                  formControlName="name"
+                />
+
+                <label for="address" class="form-label">Address:</label>
+                <textarea
+                  class="address form-control"
+                  rows="4"
+                  id="address"
+                  formControlName="address"
+                ></textarea>
+              </div>
+            </div>
+            <!-- credit card element end-->
+            <button type="submit" class="submit-btn">
+              Proceed to Checkout
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
